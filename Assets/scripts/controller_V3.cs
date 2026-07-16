@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class controller_V3 : MonoBehaviour {
 	public CharacterController controller;
@@ -19,7 +20,7 @@ public class controller_V3 : MonoBehaviour {
 	}
 
 	public void rotate(Vector2 lookVector) {
-		rotY = lookVector.x * rotSpd * Time.deltaTime;
+		rotY += lookVector.x * rotSpd * Time.deltaTime;
 		transform.localRotation = Quaternion.Euler(0,rotY,0);
 	}
 }
