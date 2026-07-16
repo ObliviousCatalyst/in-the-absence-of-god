@@ -1,3 +1,4 @@
+/****** PLEASE, OH PLAESE, DEAR GOD, DO NOT USE THIS PIECE OF SHIT UNLESS ABSOULTELY NECESARY ******/
 using Mono.Cecil.Cil;
 using UnityEngine;
 
