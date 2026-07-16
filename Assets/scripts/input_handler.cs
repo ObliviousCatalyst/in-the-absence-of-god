@@ -9,6 +9,7 @@ public class input_handler : MonoBehaviour {
 		moveAct = InputSystem.actions.FindAction("Move");
 		lookAct = InputSystem.actions.FindAction("Look");
 		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	void Update() {
