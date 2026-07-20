@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class controller_V3 : MonoBehaviour {
 	public CharacterController controller;
 	public float moveSpd = 10f, rotSpd = 25;
-	float rotY;
+	float rotZ, rotY;
 	void Start () {
 		controller = GetComponent<CharacterController>();
 	}

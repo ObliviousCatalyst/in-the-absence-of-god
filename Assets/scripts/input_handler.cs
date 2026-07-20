@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,7 @@ public class input_handler : MonoBehaviour {
 		Vector2 movementVector = moveAct.ReadValue<Vector2>();
 		V3controller.move(movementVector);
 		Vector2 lookVector = lookAct.ReadValue<Vector2>();
+		Console.WriteLine(lookVector.ToString());
 		V3controller.rotate(lookVector);
 		bool playerInteract = interAct.ReadValue<bool>();
 		V3controller.interact(playerInteract);
