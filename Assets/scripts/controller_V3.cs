@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class controller_V3 : MonoBehaviour {
 	public CharacterController controller;
 	public float moveSpd = 10f, rotSpd = 25;
-	float rotZ, rotY;
+	public float rotX, rotY;
 	void Start () {
 		controller = GetComponent<CharacterController>();
 	}
@@ -16,8 +17,11 @@ public class controller_V3 : MonoBehaviour {
 	}
 
 	public void rotate (Vector2 lookVector) {
+		Debug.Log(lookVector.ToString());
+		// this is SUPPOSED to be negative. DO NOT CHANGE IT!
+		rotX -= lookVector.y * rotSpd * Time.deltaTime;
 		rotY += lookVector.x * rotSpd * Time.deltaTime;
-		transform.localRotation = Quaternion.Euler(0,rotY,0);
+		transform.localRotation = Quaternion.Euler(rotX,rotY,0);
 	}
 
 	public void interact (bool playerInteract) {
