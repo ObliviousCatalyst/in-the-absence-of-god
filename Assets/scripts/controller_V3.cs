@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class controller_V3 : MonoBehaviour {
 	public CharacterController controller;
-	public float moveSpd = 10f, rotSpd = 25;
-	public float rotX, rotY;
+	public float moveSpd = 10f, rotSpd = 25, gravity = 30;
+	public float rotX, rotY, vertVel;
 	void Start () {
 		controller = GetComponent<CharacterController>();
 	}
@@ -14,6 +14,8 @@ public class controller_V3 : MonoBehaviour {
 		Vector3 movement = transform.forward * movementVector.y + transform.right * movementVector.x;
 		movement = movement * moveSpd * Time.deltaTime;
 		controller.Move(movement);
+		vertVel -= gravity * Time.deltaTime;
+		controller.Move(new Vector3(0,vertVel,0) * Time.deltaTime);
 	}
 
 	public void rotate (Vector2 lookVector) {
