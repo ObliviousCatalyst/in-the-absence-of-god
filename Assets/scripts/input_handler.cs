@@ -12,6 +12,10 @@ public class input_handler : MonoBehaviour {
 		interAct = InputSystem.actions.FindAction("Interact");
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
+		interAct.performed += ctx => {
+			Debug.Log("inteact performed");
+			V3controller.interact();
+		}; 
 	}
 
 	void Update() {
@@ -20,7 +24,7 @@ public class input_handler : MonoBehaviour {
 		Vector2 lookVector = lookAct.ReadValue<Vector2>();
 		Console.WriteLine(lookVector.ToString());
 		V3controller.rotate(lookVector);
-		bool playerInteract = interAct.ReadValue<bool>();
-		V3controller.interact(playerInteract);
+		
+		
 	}
 }

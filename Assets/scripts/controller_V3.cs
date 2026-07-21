@@ -1,11 +1,13 @@
 using System;
+using System.Text.Json.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class controller_V3 : MonoBehaviour {
 	public CharacterController controller;
-	public float moveSpd = 10f, rotSpd = 25, gravity = 30;
+	public float moveSpd = 10f, rotSpd = 25, gravity = 30, maxRayDist = 30;
 	public float rotX, rotY, vertVel;
+	RaycastHit interRayData;
 	void Start () {
 		controller = GetComponent<CharacterController>();
 	}
@@ -19,16 +21,18 @@ public class controller_V3 : MonoBehaviour {
 	}
 
 	public void rotate (Vector2 lookVector) {
-		Debug.Log(lookVector.ToString());
+		//Debug.Log(lookVector.ToString());
 		// this is SUPPOSED to be negative. DO NOT CHANGE IT!
 		rotX -= lookVector.y * rotSpd * Time.deltaTime;
 		rotY += lookVector.x * rotSpd * Time.deltaTime;
 		transform.localRotation = Quaternion.Euler(rotX,rotY,0);
 	}
 
-	public void interact (bool playerInteract) {
-		if (playerInteract) {
-			// do some shit
+	public void interact () {
+		Debug.Log("interaction function called");
+		if (Physics.Raycast(transform.position,transform.forward,out interRayData,maxRayDist)) {
+			Debug.Log("fired raycast");
+			Debug.Log($"raycast return: { interRayData.collider.name }");
 		}
 	}
 }
