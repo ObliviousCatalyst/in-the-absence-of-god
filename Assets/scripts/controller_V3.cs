@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class controller_V3 : MonoBehaviour {
 	public CharacterController controller;
-	public float moveSpd = 10f, rotSpd = 25, gravity = 30, maxRayDist = 30;
+	public float moveSpd = 7f, rotSpd = 25, gravity = 30, maxRayDist = 30;
 	public float rotX, rotY, vertVel;
 	RaycastHit interRayData;
 	void Start () {
@@ -35,6 +35,15 @@ public class controller_V3 : MonoBehaviour {
 		if (Physics.Raycast(transform.position,transform.forward,out interRayData,maxRayDist)) {
 			Debug.Log("fired raycast");
 			Debug.Log($"raycast return: { interRayData.collider.name }");
+		}
+	}
+
+	public void sprint (bool input) {
+		if (input) {
+			moveSpd = 20f;
+		}
+		else {
+			moveSpd = 7f;
 		}
 	}
 }

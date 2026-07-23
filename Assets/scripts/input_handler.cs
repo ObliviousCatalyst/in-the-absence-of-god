@@ -4,18 +4,25 @@ using UnityEngine.InputSystem;
 
 public class input_handler : MonoBehaviour {
 	public controller_V3 V3controller;
-	InputAction moveAct, lookAct, interAct;
+	InputAction moveAct, lookAct, interAct, sprintAct;
+	float bufferTime;
+	float bufferTimeConst = 0.05f;
 
 	void Start() {
 		moveAct = InputSystem.actions.FindAction("Move");
 		lookAct = InputSystem.actions.FindAction("Look");
 		interAct = InputSystem.actions.FindAction("Interact");
+		sprintAct = InputSystem.actions.FindAction("Sprint");
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 		interAct.performed += ctx => {
-			Debug.Log("inteact performed");
+			Debug.Log("interact performed");
 			V3controller.interact();
 		}; 
+		sprintAct.performed += ctx => {
+			bufferTime += bufferTimeConst;
+		};
+		
 	}
 
 	void Update() {
@@ -24,7 +31,10 @@ public class input_handler : MonoBehaviour {
 		Vector2 lookVector = lookAct.ReadValue<Vector2>();
 		Console.WriteLine(lookVector.ToString());
 		V3controller.rotate(lookVector);
-		
+		if (bufferTime > 0) {
+			bufferTime -=  Time.deltaTime;
+		}
+		V3controller.sprint(bufferTime > 0);
 		
 	}
 }
