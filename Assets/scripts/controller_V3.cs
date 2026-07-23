@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,7 @@ public class controller_V3 : MonoBehaviour {
 		// this is SUPPOSED to be negative. DO NOT CHANGE IT!
 		rotX -= lookVector.y * rotSpd * Time.deltaTime;
 		rotY += lookVector.x * rotSpd * Time.deltaTime;
+		rotX = math.clamp(rotX,-90,90);
 		transform.localRotation = Quaternion.Euler(rotX,rotY,0);
 	}
 
