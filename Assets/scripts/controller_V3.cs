@@ -1,8 +1,5 @@
-using System;
-using System.Text.Json.Serialization;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class controller_V3 : MonoBehaviour {
 	public CharacterController controller;
