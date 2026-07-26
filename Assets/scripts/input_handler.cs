@@ -8,7 +8,7 @@ public class input_handler : MonoBehaviour {
 	InputAction moveAct, lookAct, interAct, sprintAct;
 	float bufferTime;
 	float bufferTimeConst = 0.05f;
-	[SerializeField] inventory playerInventory = new inventory();
+	inventory playerInventory = new inventory();
 
 	void Start() {
 		moveAct = InputSystem.actions.FindAction("Move");
