@@ -20,7 +20,7 @@ public class inventory : MonoBehaviour {
 	}
 
 	public class limited {
-		//---------------------------------V this controlls the maximum nuber of items
+		//---------------------------------V this controlls the maximum number of items
 		public object[] items = new object[4];
 
 		public void add(int index, item obj) {

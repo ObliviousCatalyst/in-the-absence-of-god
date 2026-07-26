@@ -1006,6 +1006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 896714675}
   - component: {fileID: 896714674}
+  - component: {fileID: 896714676}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -1035,12 +1036,24 @@ Transform:
   m_GameObject: {fileID: 896714673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.38368, y: 0.14949, z: -0.28364}
+  m_LocalPosition: {x: 0.38368, y: 0.14949, z: 26.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &896714676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896714673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54be62995878d6e489a21648c74c87d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::inventory
 --- !u!1 &911080547 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5233112405309087440, guid: 06eacbefe6c2b97438affc35823d36d3, type: 3}
