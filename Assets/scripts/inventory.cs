@@ -1,13 +1,14 @@
 using UnityEngine;
 
-public class inventory : MonoBehaviour {
+public class inventory {
 	public class item {
-		item () {
-			
+		public string name;
+		public item (string name) {
+			this.name = name;
 		}
 	}
 	
-	public class key {
+	public class keyClass {
 		public object[] items = new object[] {};
 		
 		public void add(int index, item obj) {
@@ -19,7 +20,7 @@ public class inventory : MonoBehaviour {
 		}
 	}
 
-	public class limited {
+	public class limitedClass {
 		//---------------------------------V this controlls the maximum number of items
 		public object[] items = new object[4];
 
@@ -32,7 +33,7 @@ public class inventory : MonoBehaviour {
 		}
 	}
 	
-	public class unlimited {
+	public class unlimitedClass {
 		public object[] items = new object[] {};
 		
 		public void add(int index, item obj) {
@@ -44,7 +45,7 @@ public class inventory : MonoBehaviour {
 		}
 	}
 
-	public class large {
+	public class largeClass {
 		public object item;
 		
 		public void add(item obj) {
@@ -55,4 +56,8 @@ public class inventory : MonoBehaviour {
 			item = null;
 		}
 	}
+	public keyClass key = new keyClass();
+	public limitedClass limited = new limitedClass();
+	public unlimitedClass unlimited = new unlimitedClass();
+	public largeClass large = new largeClass();
 }
