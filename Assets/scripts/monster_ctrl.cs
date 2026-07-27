@@ -35,7 +35,12 @@ public class monster_ctrl : MonoBehaviour {
 
 	[SerializeField] trigger_detection angelTrigger;
 
-	public float hardTime, angelInterval;
+	public float 
+	hardTime, 
+	angelInterval, 
+	angelForgiveness;
+
+	[SerializeField] float angelTimeIndex = 0;
 
 	void Start() {
 		hardTime = 300;
@@ -51,11 +56,11 @@ public class monster_ctrl : MonoBehaviour {
 		}
 
 		if (active.angel) {
-			float interval = angelInterval, timeIndex = 0;
-			timeIndex += Time.deltaTime;
+			float interval = angelInterval;
+			angelTimeIndex += Time.deltaTime;
 			int rand = UnityEngine.Random.Range(1,20);
 			//Debug.Log($"{timeIndex >= interval} ~~ {rand == 1} ~~ {!attacking.angel}");
-			if (timeIndex >= interval && rand == 1 && !attacking.angel) {
+			if (angelTimeIndex >= interval && rand == 1 && !attacking.angel) {
 				Debug.Log("angel is attacking");
 				attacking.angel = true;
 				Transform[] transforms = new Transform[] {angelSpawn1,angelSpawn1,angelSpawn3,angelSpawn4,angelSpawn5};
@@ -75,7 +80,7 @@ public class monster_ctrl : MonoBehaviour {
 					callback?.Invoke();
 				}
 
-				StartCoroutine(timer(30f,() => {
+				StartCoroutine(timer(angelForgiveness,() => {
 					Debug.Log("timer expired");
 					if (angelTrigger.playerDetected) {
 						angelRender.enabled = true;
@@ -85,6 +90,7 @@ public class monster_ctrl : MonoBehaviour {
 					else {
 						attacking.angel = false;
 						angelT.position = transform.position;
+						angelTimeIndex = 0;
 						Debug.Log("player escaped");
 					}
 				}));

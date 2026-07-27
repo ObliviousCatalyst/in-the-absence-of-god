@@ -160,7 +160,8 @@ MonoBehaviour:
   angelRender: {fileID: 428798420}
   angelTrigger: {fileID: 428798423}
   hardTime: 0
-  angelInterval: 0
+  angelInterval: 30
+  angelForgiveness: 30
 --- !u!4 &69917419
 Transform:
   m_ObjectHideFlags: 0
