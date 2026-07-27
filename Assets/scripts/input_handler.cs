@@ -3,12 +3,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class input_handler : MonoBehaviour {
 	public controller_V3 V3controller;
 	InputAction moveAct, lookAct, interAct, sprintAct;
 	float bufferTime;
 	float bufferTimeConst = 0.05f;
-	inventory playerInventory = new inventory();
+	[SerializeField] inventory playerInventory;
 
 	void Start() {
 		moveAct = InputSystem.actions.FindAction("Move");
@@ -20,9 +21,6 @@ public class input_handler : MonoBehaviour {
 		interAct.performed += ctx => {
 			Debug.Log("interact performed");
 			V3controller.interact();
-			// the lines below is TEMPORARY
-			inventory.item temp = new inventory.item("a");
-			playerInventory.unlimited.add(0,temp);
 		}; 
 		sprintAct.performed += ctx => {
 			bufferTime += bufferTimeConst;

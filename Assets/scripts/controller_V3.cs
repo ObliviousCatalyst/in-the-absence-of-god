@@ -32,6 +32,9 @@ public class controller_V3 : MonoBehaviour {
 		if (Physics.Raycast(transform.position,transform.forward,out interRayData,maxRayDist)) {
 			Debug.Log("fired raycast");
 			Debug.Log($"raycast return: { interRayData.collider.name }");
+			if (interRayData.collider.TryGetComponent(out interact_1 objectFunc)) {
+				objectFunc.interact();
+			}
 		}
 	}
 

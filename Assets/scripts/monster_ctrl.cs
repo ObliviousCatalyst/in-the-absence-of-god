@@ -19,13 +19,16 @@ public class monster_ctrl : MonoBehaviour {
 	activityList active = new activityList(true);
 	activityList attacking = new activityList(false);
 
-	[SerializeField] private GameObject 
+	[SerializeField] Transform
 	angelSpawn1, 
 	angelSpawn2, 
 	angelSpawn3, 
 	angelSpawn4, 
 	angelSpawn5,
-	player;
+	player,
+	angel,
+	wendigo,
+	meatThing;
 	
 
 	void Start() {
