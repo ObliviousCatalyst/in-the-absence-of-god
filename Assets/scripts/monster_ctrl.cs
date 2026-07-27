@@ -53,7 +53,10 @@ public class monster_ctrl : MonoBehaviour {
 		if (active.angel) {
 			float interval = angelInterval, timeIndex = 0;
 			timeIndex += Time.deltaTime;
-			if (timeIndex >= interval && UnityEngine.Random.Range(1,20) == 1 && !attacking.angel) {
+			int rand = UnityEngine.Random.Range(1,20);
+			//Debug.Log($"{timeIndex >= interval} ~~ {rand == 1} ~~ {!attacking.angel}");
+			if (timeIndex >= interval && rand == 1 && !attacking.angel) {
+				Debug.Log("angel is attacking");
 				attacking.angel = true;
 				Transform[] transforms = new Transform[] {angelSpawn1,angelSpawn1,angelSpawn3,angelSpawn4,angelSpawn5};
 				var minDist = Mathf.Infinity;
@@ -73,11 +76,20 @@ public class monster_ctrl : MonoBehaviour {
 				}
 
 				StartCoroutine(timer(30f,() => {
+					Debug.Log("timer expired");
 					if (angelTrigger.playerDetected) {
 						angelRender.enabled = true;
+						Debug.Log("player is fucked");
 						// do jumpscare and shit
+					} 
+					else {
+						attacking.angel = false;
+						angelT.position = transform.position;
+						Debug.Log("player escaped");
 					}
 				}));
+
+				Debug.Log("timer started");
 			}
 		} 
 
