@@ -20,8 +20,20 @@ MonoBehaviour:
     rid: 4403097194438066245
   m_ActivePlatformGuid: 
   m_AdditionalPlatformBuildSettings: []
-  m_OverrideGlobalSceneList: 0
-  m_Scenes: []
+  m_OverrideGlobalSceneList: 1
+  m_Scenes:
+  - m_enabled: 1
+    m_path: Assets/Scenes/forest.unity
+    m_guid: f218de0bbc8f17a40bc63ad6c49bd1be
+  - m_enabled: 1
+    m_path: Assets/Scenes/death.unity
+    m_guid: 8a075ecc1f2da06478056633d498360c
+  - m_enabled: 1
+    m_path: Assets/Scenes/intro.unity
+    m_guid: cdac3f2473fa8504ab8af13987782db9
+  - m_enabled: 1
+    m_path: Assets/Scenes/main menu.unity
+    m_guid: 346026166d226d14bb4207d0139e4e7c
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
