@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -25,26 +26,58 @@ public class monster_ctrl : MonoBehaviour {
 	angelSpawn3, 
 	angelSpawn4, 
 	angelSpawn5,
-	player,
-	angel,
-	wendigo,
-	meatThing;
+	playerT,
+	angelT,
+	wendigoT,
+	meatThingT;
 	
+	[SerializeField] Renderer angelRender;
+
+	[SerializeField] trigger_detection angelTrigger;
+
+	public float hardTime, angelInterval;
 
 	void Start() {
-		
+		hardTime = 300;
+		angelRender.enabled = false;
 	}
 
 	void Update() {
 		if (active.king) {
-			
+			hardTime -= Time.deltaTime;
+			if (hardTime <= 0) {
+				// play jumpscare and kill player
+			}
 		}
 
 		if (active.angel) {
-			float interval = 5, timeIndex = 0;
+			float interval = angelInterval, timeIndex = 0;
 			timeIndex += Time.deltaTime;
 			if (timeIndex >= interval && UnityEngine.Random.Range(1,20) == 1 && !attacking.angel) {
-				
+				attacking.angel = true;
+				Transform[] transforms = new Transform[] {angelSpawn1,angelSpawn1,angelSpawn3,angelSpawn4,angelSpawn5};
+				var minDist = Mathf.Infinity;
+				Transform closest = angelSpawn1;
+				foreach (Transform trans in transforms) {
+					var tempDist = (trans.position - playerT.position).sqrMagnitude;
+					if(tempDist < minDist) {
+						minDist = tempDist;
+						closest = trans;
+					}
+				}
+				angelT.position = closest.position;
+
+				IEnumerator timer (float delay, System.Action callback) {
+					yield return new WaitForSeconds(delay);
+					callback?.Invoke();
+				}
+
+				StartCoroutine(timer(30f,() => {
+					if (angelTrigger.playerDetected) {
+						angelRender.enabled = true;
+						// do jumpscare and shit
+					}
+				}));
 			}
 		} 
 
