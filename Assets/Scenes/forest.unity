@@ -158,7 +158,9 @@ MonoBehaviour:
   wendigoT: {fileID: 0}
   meatThingT: {fileID: 0}
   angelRender: {fileID: 428798420}
+  angelTrigger: {fileID: 428798423}
   hardTime: 0
+  angelInterval: 0
 --- !u!4 &69917419
 Transform:
   m_ObjectHideFlags: 0
@@ -662,6 +664,7 @@ GameObject:
   - component: {fileID: 428798420}
   - component: {fileID: 428798419}
   - component: {fileID: 428798422}
+  - component: {fileID: 428798423}
   m_Layer: 0
   m_Name: angel
   m_TagString: Untagged
@@ -777,6 +780,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &428798423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428798418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105a2947d52b7c848bd69090d66daf4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::trigger_detection
+  playerDetected: 0
 --- !u!1 &447521485 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5233112405309087440, guid: 06eacbefe6c2b97438affc35823d36d3, type: 3}
@@ -2006,7 +2022,7 @@ GameObject:
   - component: {fileID: 1721514890}
   m_Layer: 0
   m_Name: character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
