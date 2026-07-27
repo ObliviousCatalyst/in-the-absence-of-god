@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class monster_ctrl : MonoBehaviour {
 	class activityList {
@@ -85,6 +86,7 @@ public class monster_ctrl : MonoBehaviour {
 					if (angelTrigger.playerDetected) {
 						angelRender.enabled = true;
 						Debug.Log("player is fucked");
+						StartCoroutine(timer(10,() => SceneManager.LoadScene("death")));
 						// do jumpscare and shit
 					} 
 					else {
