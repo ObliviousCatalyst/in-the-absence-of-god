@@ -3,11 +3,41 @@ using UnityEngine;
 
 public class controller_V3 : MonoBehaviour {
 	public CharacterController controller;
-	public float moveSpd = 7f, rotSpd = 25, gravity = 30, maxRayDist = 30;
-	public float rotX, rotY, vertVel;
+	public float 
+	moveSpd = 7f,
+	rotSpd = 25,
+	gravity = 30,
+	maxRayDist = 30,
+	stamina = 10,
+	sprintBuffer = 0;
+	public float rotX, rotY, vertVel, maxSpd;
 	RaycastHit interRayData;
+	public bool canSprint = true;
+
 	void Start () {
 		controller = GetComponent<CharacterController>();
+	}
+
+	void Update () {
+		if (sprintBuffer < 0.5f) {
+			moveSpd -= 7 * Time.deltaTime;
+		}
+		
+		moveSpd = math.clamp(moveSpd,7,maxSpd);
+
+		sprintBuffer -= Time.deltaTime;
+		sprintBuffer = math.clamp(sprintBuffer,0,1);
+		if (sprintBuffer == 0) {
+			stamina += 3 * Time.deltaTime;
+		}
+		stamina = math.clamp(stamina,0,10);
+		
+		if (stamina > 7) {
+			canSprint = true;
+		}
+		if (stamina == 0){
+			canSprint = false;
+		}
 	}
 
 	public void move (Vector2 movementVector) {
@@ -38,12 +68,11 @@ public class controller_V3 : MonoBehaviour {
 		}
 	}
 
-	public void sprint (bool input) {
-		if (input) {
-			moveSpd = 20f;
-		}
-		else {
-			moveSpd = 7f;
+	public void sprint () {
+		if(canSprint) {
+			moveSpd += 3;
+			stamina -= 1;
+			sprintBuffer = 1;
 		}
 	}
 }
