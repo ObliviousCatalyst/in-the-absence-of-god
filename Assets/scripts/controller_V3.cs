@@ -13,6 +13,7 @@ public class controller_V3 : MonoBehaviour {
 	public float rotX, rotY, vertVel, maxSpd;
 	RaycastHit interRayData;
 	public bool canSprint = true;
+	[SerializeField] ui_controller UI;
 
 	void Start () {
 		controller = GetComponent<CharacterController>();
@@ -74,5 +75,10 @@ public class controller_V3 : MonoBehaviour {
 			stamina -= 1;
 			sprintBuffer = 1;
 		}
+	}
+
+	public void switchItem (int key) {
+		string[] items = new string[] {"PDA","wrench","hammer","gas","flash","battery"};
+		UI.show(items[key - 1]);
 	}
 }

@@ -1,12 +1,11 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 public class input_handler : MonoBehaviour {
 	public controller_V3 V3controller;
-	InputAction moveAct, lookAct, interAct, sprintAct;
+	InputAction moveAct, lookAct, interAct, sprintAct, switchAct;
 	[SerializeField] inventory playerInventory;
 
 	void Start() {
@@ -14,6 +13,7 @@ public class input_handler : MonoBehaviour {
 		lookAct = InputSystem.actions.FindAction("Look");
 		interAct = InputSystem.actions.FindAction("Interact");
 		sprintAct = InputSystem.actions.FindAction("Sprint");
+		switchAct = InputSystem.actions.FindAction("switch");
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 		interAct.performed += ctx => {
@@ -22,6 +22,11 @@ public class input_handler : MonoBehaviour {
 		}; 
 		sprintAct.performed += ctx => {
 			V3controller.sprint();
+		};
+		switchAct.performed += (InputAction.CallbackContext context) => {
+			if (context.control is UnityEngine.InputSystem.Controls.KeyControl key) {
+				V3controller.switchItem((int)Char.GetNumericValue(key.name[0]));
+			}
 		};
 		
 	}

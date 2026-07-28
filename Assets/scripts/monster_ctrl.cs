@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class monster_ctrl : MonoBehaviour {
-	class activityList {
+	[System.Serializable]
+	public class activityList {
 		public bool 
 		king,
 		angel,
@@ -18,8 +19,8 @@ public class monster_ctrl : MonoBehaviour {
 		}
 	}
 
-	activityList active = new activityList(true);
-	activityList attacking = new activityList(false);
+	public activityList active = new activityList(true);
+	public activityList attacking = new activityList(false);
 
 	[SerializeField] Transform
 	angelSpawn1, 
