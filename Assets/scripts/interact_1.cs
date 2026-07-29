@@ -7,17 +7,45 @@ public class interact_1 : MonoBehaviour {
 	[SerializeField] progresss_tracker_1 progress;
 	[SerializeField] ui_controller UI;
 	[SerializeField] string type;
-	[SerializeField] string subtype;
+	[SerializeField] string subtype, dependancy1, dependancy2;
 	[SerializeField] int quantity;
 	[SerializeField] string command;
 	[SerializeField] Material active;
 	bool usable = true;
 
-	
 	public void interact() {
 		if (!usable) {
 			return;	
 		}
+
+		bool checkDependancy (string dep) {
+			switch (dep) {
+				case "power":
+					return progress.power;
+				//break;
+
+				case "radio":
+					return progress.radio;
+				//break;
+
+				case "portal":
+					return progress.portal;
+				//break;
+
+				case "sensor":
+					if (progress.sensors >= 7) {
+						return true;
+					}
+					return false;
+				//break;
+			}
+			return true;
+		}
+		
+		if(!checkDependancy(dependancy1) || !checkDependancy(dependancy2)) {
+			return;
+		}
+
 		switch (type) {
 			case "give": 
 				switch (subtype) {
@@ -35,6 +63,18 @@ public class interact_1 : MonoBehaviour {
 
 					case "gas":
 						playerInvetory.gas = true;
+						Debug.Log("aquired gas can");
+						execute();
+					break;
+
+					case "wrench":
+						playerInvetory.wrench = true;
+						Debug.Log("aquired gas can");
+						execute();
+					break;
+
+					case "hammer":
+						playerInvetory.hammer = true;
 						Debug.Log("aquired gas can");
 						execute();
 					break;

@@ -310,6 +310,8 @@ MonoBehaviour:
   UI: {fileID: 1721514897}
   type: take
   subtype: gas
+  dependancy1: 
+  dependancy2: 
   quantity: 1
   command: fufill ; wake king , angel ; complete major power
   active: {fileID: 0}
@@ -563,6 +565,8 @@ MonoBehaviour:
   UI: {fileID: 0}
   type: give
   subtype: hammer
+  dependancy1: 
+  dependancy2: 
   quantity: 1
   command: 
   active: {fileID: 0}
@@ -2483,6 +2487,8 @@ MonoBehaviour:
   UI: {fileID: 0}
   type: give
   subtype: wrench
+  dependancy1: 
+  dependancy2: 
   quantity: 1
   command: 
   active: {fileID: 0}
@@ -3225,6 +3231,8 @@ MonoBehaviour:
   UI: {fileID: 0}
   type: give
   subtype: gas
+  dependancy1: 
+  dependancy2: 
   quantity: 1
   command: 
   active: {fileID: 0}
@@ -3822,6 +3830,8 @@ MonoBehaviour:
   UI: {fileID: 1721514897}
   type: take
   subtype: wrench
+  dependancy1: power
+  dependancy2: 
   quantity: 1
   command: fufill ; wake wendigo , meat-thing ; complete major radio
   active: {fileID: 0}
@@ -4566,6 +4576,8 @@ MonoBehaviour:
   UI: {fileID: 0}
   type: give
   subtype: flashes
+  dependancy1: 
+  dependancy2: 
   quantity: 2
   command: 
   active: {fileID: 0}
@@ -4709,6 +4721,8 @@ GameObject:
   - component: {fileID: 1721514890}
   - component: {fileID: 1721514897}
   - component: {fileID: 1721514898}
+  - component: {fileID: 1721514900}
+  - component: {fileID: 1721514899}
   m_Layer: 0
   m_Name: character
   m_TagString: Player
@@ -4915,6 +4929,118 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1721514899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721514889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d877a2aeb99b6b41b611ed76c016b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::audioplayer
+  play: 1
+  angelTrigger: {fileID: 428798423}
+  aud: {fileID: 1721514900}
+--- !u!82 &1721514900
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721514889}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 011e183567321464da885193a9924d94, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1800584980 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 45fef582904f41340a7c59bd7f41aa73, type: 3}
@@ -4938,6 +5064,8 @@ MonoBehaviour:
   UI: {fileID: 1721514897}
   type: take
   subtype: batteries
+  dependancy1: power
+  dependancy2: 
   quantity: 1
   command: 'fufill ; complete minor sensor ; this color '
   active: {fileID: 2100000, guid: 3dac3ae42f879054ab8198a755d9b5da, type: 2}
@@ -5270,6 +5398,8 @@ MonoBehaviour:
   UI: {fileID: 0}
   type: give
   subtype: batteries
+  dependancy1: 
+  dependancy2: 
   quantity: 7
   command: 
   active: {fileID: 0}
