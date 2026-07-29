@@ -19,7 +19,7 @@ public class monster_ctrl : MonoBehaviour {
 		}
 	}
 
-	public activityList active = new activityList(true);
+	public activityList active = new activityList(false);
 	public activityList attacking = new activityList(false);
 
 	[SerializeField] Transform
