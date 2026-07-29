@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class monster_ctrl : MonoBehaviour {
@@ -33,16 +34,19 @@ public class monster_ctrl : MonoBehaviour {
 	wendigoT,
 	meatThingT;
 	
-	[SerializeField] Renderer angelRender;
+	[SerializeField] Renderer angelRender, meatRender;
 
-	[SerializeField] trigger_detection angelTrigger;
+	[SerializeField] trigger_detection angelTrigger, meatTrigger;
+
+	[SerializeField] NavMeshAgent meatThingAgent;
 
 	public float 
 	hardTime, 
 	angelInterval, 
-	angelForgiveness;
+	angelForgiveness,
+	meatInterval;
 
-	[SerializeField] float angelTimeIndex = 0;
+	[SerializeField] float angelTimeIndex = 0, meatTimeIndex = 0;
 
 	void Start() {
 		hardTime = 300;
@@ -107,7 +111,28 @@ public class monster_ctrl : MonoBehaviour {
 		}
 
 		if (active.meatThing) {
-			
+			float interval = meatInterval;
+			meatTimeIndex += Time.deltaTime;
+			int rand = UnityEngine.Random.Range(1,20);
+			if (meatTimeIndex >= interval && rand == 1 && !attacking.meatThing) {
+				attacking.meatThing = true;
+			}
+			if (attacking.meatThing) {
+				meatRender.enabled = true;
+				meatTrigger.enabled = true;
+				meatThingAgent.SetDestination(playerT.position);
+				if (meatTrigger.playerDetected) {
+					SceneManager.LoadScene("death");
+				}
+			}
+			else {
+				meatRender.enabled = false;
+				meatTrigger.enabled = false;
+			}
 		}
+		else {
+			meatRender.enabled = false;
+			meatTrigger.enabled = false;
+		}	
 	}
 }
