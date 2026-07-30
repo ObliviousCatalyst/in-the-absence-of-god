@@ -15,25 +15,30 @@ public class interact_1 : MonoBehaviour {
 
 	public void interact() {
 		if (!usable) {
+			Debug.Log("denied");
 			return;	
 		}
 
 		bool checkDependancy (string dep) {
 			switch (dep) {
 				case "power":
+					Debug.Log("power passed");
 					return progress.power;
 				//break;
 
 				case "radio":
+					Debug.Log("radio passed");
 					return progress.radio;
 				//break;
 
 				case "portal":
+					Debug.Log("portal passed");
 					return progress.portal;
 				//break;
 
 				case "sensor":
 					if (progress.sensors >= 7) {
+						Debug.Log("sensors passed");
 						return true;
 					}
 					return false;
@@ -43,6 +48,7 @@ public class interact_1 : MonoBehaviour {
 		}
 		
 		if(!checkDependancy(dependancy1) || !checkDependancy(dependancy2)) {
+			Debug.Log("failed dependancy check");
 			return;
 		}
 
@@ -84,7 +90,7 @@ public class interact_1 : MonoBehaviour {
 			case "take":
 				switch (subtype) {
 					case "batteries":
-						if (playerInvetory.batteries > 1 && UI.showing == "battery") {
+						if (playerInvetory.batteries > 0 && UI.showing == "battery") {
 							playerInvetory.batteries--;
 							execute();
 						}
@@ -136,7 +142,7 @@ public class interact_1 : MonoBehaviour {
 
 				case "complete":
 					primeIndex++;
-					complete(index +1);
+					complete(index + 1);
 				break;
 
 				case "this":
@@ -182,10 +188,33 @@ public class interact_1 : MonoBehaviour {
 		}
 
 		void complete (int index) {
-			void major() {
+			void major(int index) {
 				primeIndex++;
+				// fuck it, i'm making some bullshit
+				
+				Debug
+
+				.
+
+
+				Log
+
+
+				(
+
+
+
+
+				$"index: {index} ~~ {cmd.Length} ~~ {cmd[index]}"
+
+
+
+				)
+
+				;
 				switch(cmd[index]) {
 					case "power":
+						Debug.Log("activated power");
 						progress.power = true;
 					break;
 
@@ -208,7 +237,7 @@ public class interact_1 : MonoBehaviour {
 			switch(cmd[index]) {
 				case "major":
 					primeIndex++;
-					major();
+					major(primeIndex);
 				break;
 
 				case "minor":

@@ -38,6 +38,8 @@ public class monster_ctrl : MonoBehaviour {
 
 	[SerializeField] trigger_detection angelTrigger, meatTrigger;
 
+	[SerializeField] audioplayer audio;
+
 	[SerializeField] NavMeshAgent meatThingAgent;
 
 	public float 
@@ -91,6 +93,7 @@ public class monster_ctrl : MonoBehaviour {
 					if (angelTrigger.playerDetected) {
 						angelRender.enabled = true;
 						Debug.Log("player is fucked");
+						audio.overPlay = true;
 						StartCoroutine(timer(10,() => SceneManager.LoadScene("death")));
 						// do jumpscare and shit
 					} 

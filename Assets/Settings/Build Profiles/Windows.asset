@@ -34,6 +34,9 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/main menu.unity
     m_guid: 346026166d226d14bb4207d0139e4e7c
+  - m_enabled: 1
+    m_path: Assets/Scenes/abrupt end.unity
+    m_guid: 5e3c7a22d0215bc4bac89d48ceedbf68
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
