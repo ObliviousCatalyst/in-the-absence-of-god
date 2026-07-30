@@ -40,6 +40,8 @@ public class monster_ctrl : MonoBehaviour {
 
 	[SerializeField] audioplayer audio;
 
+	[SerializeField] jumpscare jmpscr;
+
 	[SerializeField] NavMeshAgent meatThingAgent;
 
 	public float 
@@ -59,7 +61,7 @@ public class monster_ctrl : MonoBehaviour {
 		if (active.king) {
 			hardTime -= Time.deltaTime;
 			if (hardTime <= 0) {
-				// play jumpscare and kill player
+				jmpscr.kingScare();
 			}
 		}
 
@@ -94,7 +96,7 @@ public class monster_ctrl : MonoBehaviour {
 						angelRender.enabled = true;
 						Debug.Log("player is fucked");
 						audio.overPlay = true;
-						StartCoroutine(timer(10,() => SceneManager.LoadScene("death")));
+						StartCoroutine(timer(10,() => jmpscr.angelScare()));
 						// do jumpscare and shit
 					} 
 					else {
@@ -125,7 +127,7 @@ public class monster_ctrl : MonoBehaviour {
 				meatTrigger.enabled = true;
 				meatThingAgent.SetDestination(playerT.position);
 				if (meatTrigger.playerDetected) {
-					SceneManager.LoadScene("death");
+					jmpscr.meatScare();
 				}
 			}
 			else {
