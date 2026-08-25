@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 15003, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: macOS
+  m_EditorClassIdentifier: UnityEditor.dll::UnityEditor.Build.Profile.BuildProfile
+  m_AssetVersion: 2
+  m_BuildTarget: 2
+  m_Subtarget: 2
+  m_PlatformId: 0d2129357eac403d8b359c2dcbf82502
+  m_PlatformBuildProfile:
+    rid: 4403097271890083842
+  m_ActivePlatformGuid: 
+  m_AdditionalPlatformBuildSettings: []
+  m_OverrideGlobalSceneList: 1
+  m_Scenes:
+  - m_enabled: 1
+    m_path: Assets/Scenes/main menu.unity
+    m_guid: 346026166d226d14bb4207d0139e4e7c
+  - m_enabled: 1
+    m_path: Assets/Scenes/intro.unity
+    m_guid: cdac3f2473fa8504ab8af13987782db9
+  - m_enabled: 1
+    m_path: Assets/Scenes/forest.unity
+    m_guid: f218de0bbc8f17a40bc63ad6c49bd1be
+  - m_enabled: 1
+    m_path: Assets/Scenes/abrupt end.unity
+    m_guid: 5e3c7a22d0215bc4bac89d48ceedbf68
+  - m_enabled: 1
+    m_path: Assets/Scenes/death.unity
+    m_guid: 8a075ecc1f2da06478056633d498360c
+  m_HasScriptingDefines: 0
+  m_ScriptingDefines: []
+  m_PlayerSettingsYaml:
+    m_Settings: []
+  requiredComponents: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4403097271890083842
+      type: {class: OSXStandaloneBuildProfile, ns: UnityEditor.OSXStandalone, asm: UnityEditor.OSXStandalone.Extensions}
+      data:
+        m_Development: 0
+        m_ConnectProfiler: 0
+        m_BuildWithDeepProfilingSupport: 0
+        m_BuildWithCodeCoverage: 0
+        m_AllowDebugging: 0
+        m_WaitForManagedDebugger: 0
+        m_ManagedDebuggerFixedPort: 0
+        m_ExplicitNullChecks: 0
+        m_ExplicitDivideByZeroChecks: 0
+        m_ExplicitArrayBoundsChecks: 0
+        m_CompressionType: 0
+        m_InstallInBuildFolder: 0
+        m_InsightsSettingsContainer:
+          m_BuildProfileEngineDiagnosticsState: 2
+        m_AdaptivePerformanceEnabled: 0
+        m_MacOSXcodeBuildConfig: 1
+        m_Architecture: 2
+        m_CreateXcodeProject: 0
